@@ -23,7 +23,22 @@ const listaCargos = [
 
 // Rota para consulta de todos os usuários
 minhaApi.get('/usuarios', (req, res) => {
-    res.json(listaUsuarios);
+    let usuarioInfo = '';
+    
+    //console.log(req.body);
+    //res.send('<h1> Hello World!</h1><p>Paragrafo foda</p>');
+    //res.send(pessoa);
+    for(const user of listaUsuarios){
+        usuarioInfo += '<p>';
+        usuarioInfo += "Codigo: "+user.id+"<br>";
+        usuarioInfo += "Nome: "+user.nome+"<br>";
+        usuarioInfo += "Idade: "+user.idade+"<br>";
+        usuarioInfo += "CPF: "+user.cpf+"<br>";
+        usuarioInfo += "Cargo ID: "+user.codigoCargo+"<br>";
+        usuarioInfo += '</p><br>';
+    }
+    res.send(usuarioInfo);
+   // res.json(listaUsuarios);
 });
 
 // Rota para consulta de um usuário pelo código
